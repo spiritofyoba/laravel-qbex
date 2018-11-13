@@ -1,0 +1,27 @@
+.chat {
+  background-color: #fff;
+  border: 1px solid #d3e0e9;
+  border-radius: 3px;
+  &__form {
+    &-text {
+      color: #777;
+    }
+    &-input {
+      outline: none;
+      border: 1px solid #d3e0e9;
+      width: 100%;
+      padding: 10px;
+      &-subject {
+        margin-bottom: 10px;
+        padding: 5px 10px;
+      }
+    }
+  }
+}
+.messages {
+  &:last-child {
+    hr {
+      display: none;
+    }
+  }
+}
