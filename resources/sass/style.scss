@@ -25,3 +25,26 @@
     }
   }
 }
+
+#comments {
+  .commentlist {
+    list-style: none;
+    padding: 0;
+    .children {
+      list-style: none;
+    }
+    .comment-container {
+      background: #eee;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+  }
+}
+#commentform {
+  textarea {
+    outline: none;
+    border: 1px solid #d3e0e9;
+    width: 100%;
+    padding: 10px;
+  }
+}

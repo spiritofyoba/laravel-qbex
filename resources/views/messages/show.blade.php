@@ -22,6 +22,8 @@
                             </div>
                         @endif
                         <p>{{ $message->body }}</p>
+                        <hr>
+                        @include('comments.comments_block', ['essence' => $message])
                     </div>
                 </div>
             </div>

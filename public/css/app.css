@@ -10492,6 +10492,28 @@ a.text-dark:focus {
   display: none;
 }
 
+#comments .commentlist {
+  list-style: none;
+  padding: 0;
+}
+
+#comments .commentlist .children {
+  list-style: none;
+}
+
+#comments .commentlist .comment-container {
+  background: #eee;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+#commentform textarea {
+  outline: none;
+  border: 1px solid #d3e0e9;
+  width: 100%;
+  padding: 10px;
+}
+
 .navbar-laravel {
   background-color: #fff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
