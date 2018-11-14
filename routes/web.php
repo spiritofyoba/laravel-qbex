@@ -12,12 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes();
 
-Route::get('/home', 'MessageController@index');
+Route::get('/home', 'MessageController@index')->name('home');
 
-Route::get('/message/{message}', 'MessageController@show'); // Single user message
+Route::get('/message/{message}', 'MessageController@show')->name('message');
 

@@ -3,6 +3,9 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
+            <div class="col-12">
+                <a href="{{ url()->previous() }}" class="btn btn-outline-secondary mb-2">Назад</a>
+            </div>
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header container">

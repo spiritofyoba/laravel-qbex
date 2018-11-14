@@ -10492,6 +10492,13 @@ a.text-dark:focus {
   display: none;
 }
 
+.messages-answer span {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  margin-left: 5px;
+}
+
 #comments .commentlist {
   list-style: none;
   padding: 0;
@@ -10505,6 +10512,12 @@ a.text-dark:focus {
   background: #eee;
   padding: 10px;
   margin-bottom: 10px;
+  border-radius: calc(0.25rem - 1px);
+}
+
+#comments .commentlist .comment-container hr {
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 #commentform textarea {
@@ -10512,6 +10525,10 @@ a.text-dark:focus {
   border: 1px solid #d3e0e9;
   width: 100%;
   padding: 10px;
+}
+
+#respond label {
+  color: #777;
 }
 
 .navbar-laravel {

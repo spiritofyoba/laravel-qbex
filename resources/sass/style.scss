@@ -24,6 +24,12 @@
       display: none;
     }
   }
+  &-answer {
+    span {
+      display: inline-flex;
+      margin-left: 5px;
+    }
+  }
 }
 
 #comments {
@@ -37,6 +43,11 @@
       background: #eee;
       padding: 10px;
       margin-bottom: 10px;
+      border-radius: calc(0.25rem - 1px);
+      hr {
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
     }
   }
 }
@@ -46,5 +57,10 @@
     border: 1px solid #d3e0e9;
     width: 100%;
     padding: 10px;
+  }
+}
+#respond {
+  label {
+    color: #777;
   }
 }

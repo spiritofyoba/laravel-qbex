@@ -3,15 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Message;
-use App\User;
 
 class Comment extends Model
 {
 
-    protected $fillable = [
-        'text'
-    ];
+    protected $guarded = [];
 
     public function post()
     {

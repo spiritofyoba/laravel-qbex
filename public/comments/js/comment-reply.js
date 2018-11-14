@@ -4,7 +4,7 @@ addComment = {
             a, h = m.I(d),
             b = m.I(i),
             l = m.I("cancel-comment-reply-link"),
-            j = m.I("comment_parent"),
+            j = m.I("parent_id"),
             k = m.I("comment_post_ID");
         if (!h || !b || !l || !j) {
 			alert(1);
@@ -31,7 +31,7 @@ addComment = {
             if (!e || !o) {
                 return
             }
-            n.I("comment_parent").value = "0";
+            n.I("parent_id").value = "0";
             e.parentNode.insertBefore(o, e);
             e.parentNode.removeChild(e);
             this.style.display = "none";

@@ -3,8 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Comment;
-use App\User;
 
 class Message extends Model {
 

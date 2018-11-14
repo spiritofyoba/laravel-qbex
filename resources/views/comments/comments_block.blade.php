@@ -42,11 +42,11 @@
         <form action="{{ route('comment')}}" method="post" id="commentform">
             <p class="comment-form-comment">
                 <label for="comment">Ваш комментарий</label>
-                <textarea id="comment" name="text" cols="45" rows="8"></textarea>
+                <textarea id="comment" name="text" rows="6" class="form-control w100"></textarea>
             </p>
 
             <input type="hidden" id="comment_post_ID" name="comment_post_ID" value="{{ $message->id}}">
-            <input type="hidden" id="comment_parent" name="comment_parent" value="">
+            <input type="hidden" id="parent_id" name="parent_id" value="">
 
             {{ csrf_field()}}
 
