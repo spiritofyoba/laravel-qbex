@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use Illuminate\Http\Request;
 use App\Message;
+use Illuminate\Support\Facades\Cookie;
 
 class MessageController extends Controller
 {
@@ -42,5 +44,13 @@ class MessageController extends Controller
     public function show(Message $message)
     {
         return view('messages.show', compact('message'));
+    }
+
+    public static function setMessageCookie(Message $message)
+    {
+        $lifetime = time() + 60 * 60 * 24 * 365;
+        $commentCount = Comment::where('message_id', $message->id)->count();
+
+        Cookie::queue('visited'[$message->id], $commentCount, $lifetime);
     }
 }
