@@ -13,9 +13,8 @@
                             </div>
                         @endif
                         @foreach($messages as $message)
-
                             @php
-                                $viewed = \Illuminate\Support\Facades\Cookie::get('visited'[$message->id]);
+                                $viewed = \Illuminate\Support\Facades\Cookie::get($message->id);
                                 $total = \App\Comment::where('message_id', $message->id)->count();
                             @endphp
 
@@ -32,10 +31,8 @@
                                         <a class="btn btn-outline-primary messages-answer"
                                            href="{{ route('message', $message->id) }}">
                                             Ответы
-                                            @if(empty($viewed) && $total > 0)
-                                                <span class="badge badge-primary">{{ $total }}</span>
-                                            @elseif($total > $viewed)
-                                                <span class="badge badge-primary">{{ $total - $viewed }}</span>
+                                            @if($total != $viewed && $total > $viewed)
+                                                <span class="badge badge-primary q2">{{ $total - $viewed }}</span>
                                             @endif
                                         </a>
                                     </p>

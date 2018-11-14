@@ -17,8 +17,14 @@ class CreateCommentsTable extends Migration
             $table->increments('id');
             $table->text('text');
             $table->integer('parent_id')->nullable();
-            $table->boolean('status')->default(config('comments.show_immediately'));
             $table->timestamps();
+            $table->integer(config('comments.key_field'))->unsigned();
+            $table->foreign(config('comments.key_field'))->references('id')->on(config('comments.key_table'));
+
+            if(config('comments.user')){
+                $table->integer('user_id')->unsigned()->nullable();	//разрешаем null
+                $table->foreign('user_id')->references('id')->on('users');
+            }
         });
     }
 

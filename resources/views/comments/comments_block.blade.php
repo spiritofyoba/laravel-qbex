@@ -2,7 +2,7 @@
 
     if($essence){
         $comments = $essence->comments;
-        $com = $comments->where('status', 1)->groupBy('parent_id');
+        $com = $comments->groupBy('parent_id');
     } else $com = null;
 
 @endphp
@@ -12,13 +12,10 @@
     <ol class="commentlist group">
         @if($com)
             @foreach($com as $k => $comments)
-
                 @if($k)
                     @break
                 @endif
-
                 @include('comments.comment', ['items' => $comments])
-
             @endforeach
         @endif
     </ol>
@@ -38,6 +35,7 @@
 
             <input type="hidden" id="comment_post_ID" name="comment_post_ID" value="{{ $message->id}}">
             <input type="hidden" id="parent_id" name="parent_id" value="">
+            <input type="hidden" name="user_id" value="{{ \Illuminate\Support\Facades\Auth::user()->id }}">
 
             {{ csrf_field()}}
 

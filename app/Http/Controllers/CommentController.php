@@ -18,9 +18,9 @@ class CommentController extends Controller
         $data['parent_id'] = $request->input('parent_id');
 
         $data['status'] = config('comments.show_immediately');
-        $user = Auth::user();
+        $user = $request->input('user_id');
         if($user) {
-            $data['user_id'] = $user->id;
+            $data['user_id'] = $user;
         }
         $validator = Validator::make($data,[
             'message_id' => 'integer|required',

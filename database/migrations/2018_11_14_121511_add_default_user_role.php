@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddSubjectToMessages extends Migration
+class AddDefaultUserRole extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddSubjectToMessages extends Migration
      */
     public function up()
     {
-        Schema::table('messages', function($table) {
-            $table->text('subject');
+        Schema::table('users', function($table) {
+            $table->text('role')->default('user')->change();
         });
     }
 
@@ -25,8 +25,8 @@ class AddSubjectToMessages extends Migration
      */
     public function down()
     {
-        Schema::table('messages', function($table) {
-            $table->dropColumn('subject');
+        Schema::table('users', function($table) {
+            $table->dropColumn('role');
         });
     }
 }

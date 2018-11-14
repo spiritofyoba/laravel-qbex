@@ -26,19 +26,28 @@ class MessageController extends Controller
      */
     public function index(Request $request)
     {
-        $messages = Message::where("user_id", "=", $request->user()->id)->get();
+        if($request->user()->role == 'user') {
+            $messages = Message::where("user_id", "=", $request->user()->id)->get();
+        } else {
+            $messages = Message::get();
+        }
 
         return view('home' , compact('messages'));
     }
 
-    public function store($request)
+    public function store(Request $request)
     {
-        $message = $request->user()->messages()->create([
+        $message = $request->user()->posts()->create([
             'subject' => $request->get('subject'),
-            'body' => $request->get('body')
+            'body' => $request->get('body'),
+            'user_id' => $request->get('user_id')
         ]);
 
-        return response()->json($message, 200);
+        Cookie::queue($message->id, 0, time() + 60 * 60 * 24 * 365);
+
+        Cookie::queue('createTimeout', 1, time() + 60 * 5);
+
+        return redirect('/home');
     }
 
     public function show(Message $message)
@@ -48,9 +57,8 @@ class MessageController extends Controller
 
     public static function setMessageCookie(Message $message)
     {
-        $lifetime = time() + 60 * 60 * 24 * 365;
         $commentCount = Comment::where('message_id', $message->id)->count();
 
-        Cookie::queue('visited'[$message->id], $commentCount, $lifetime);
+        Cookie::queue($message->id, $commentCount, time() + 60 * 60 * 24 * 365);
     }
 }

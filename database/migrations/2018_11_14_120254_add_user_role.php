@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddMessageStatus extends Migration
+class AddUserRole extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddMessageStatus extends Migration
      */
     public function up()
     {
-        Schema::table('messages', function($table) {
-            $table->boolean('status');
+        Schema::table('users', function($table) {
+            $table->text('role');
         });
     }
 
@@ -25,8 +25,8 @@ class AddMessageStatus extends Migration
      */
     public function down()
     {
-        Schema::table('messages', function($table) {
-            $table->dropColumn('status');
+        Schema::table('users', function($table) {
+            $table->dropColumn('role');
         });
     }
 }

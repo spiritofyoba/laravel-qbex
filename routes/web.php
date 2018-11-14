@@ -21,3 +21,4 @@ Route::get('/home', 'MessageController@index')->name('home');
 
 Route::get('/message/{message}', 'MessageController@show')->name('message');
 
+Route::post('/home', 'MessageController@store');
