@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\User;
 use Illuminate\Http\Request;
 use App\Message;
 use Illuminate\Support\Facades\Cookie;
@@ -49,6 +50,13 @@ class MessageController extends Controller
             'user_id' => $request->get('user_id'),
             'attachment' => $filename
         ]);
+
+        Mail::send('emails.welcome', function($message)
+        {
+            $message->from('no-reply@site.com', "Site name");
+            $message->subject("Welcome to site name");
+            $message->to(User::where('role','=','manager')->email);
+        });
 
         Cookie::queue($message->id, 0, time() + 60 * 60 * 24 * 365);
 
