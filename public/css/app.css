@@ -10609,6 +10609,50 @@ body {
   max-width: 1140px;
 }
 
+.btn-tertiary {
+  color: #555;
+  padding: 0;
+  line-height: 40px;
+  width: 100%;
+  margin: auto;
+  display: block;
+  border: 2px solid #555;
+}
+
+.btn-tertiary:hover,
+.btn-tertiary:focus {
+  color: #888888;
+  border-color: #888888;
+}
+
+/* input file style */
+
+.input-file {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.input-file + .js-labelFile {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+.input-file + .js-labelFile .icon:before {
+  content: "\F093";
+}
+
+.input-file + .js-labelFile.has-file .icon:before {
+  content: "\F00C";
+  color: #5AAC7B;
+}
+
 .navbar-laravel {
   background-color: #fff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);

@@ -20,7 +20,7 @@
         @endif
     </ol>
 
-    @if($message->status == '1')
+    @if($message->status == '1' || \Illuminate\Support\Facades\Auth::user()->role == 'manager')
         <div id="respond">
             <h3 id="reply-title">Написать <span>ответ</span>
                 <small><a rel="nofollow" id="cancel-comment-reply-link" href="#respond" style="display:none;">Отменить
