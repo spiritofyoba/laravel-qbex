@@ -42,6 +42,8 @@ class MessageController extends Controller
             $file = $request->file('attachment');
             $filename = 'message-attachment' . time() . '.' . $file->getClientOriginalExtension();
             $file->move(public_path('messages/img/'), $filename);
+        } else {
+            $filename = null;
         }
 
         $message = $request->user()->posts()->create([
@@ -51,16 +53,9 @@ class MessageController extends Controller
             'attachment' => $filename
         ]);
 
-        Mail::send('emails.welcome', function($message)
-        {
-            $message->from('no-reply@site.com', "Site name");
-            $message->subject("Welcome to site name");
-            $message->to(User::where('role','=','manager')->email);
-        });
-
         Cookie::queue($message->id, 0, time() + 60 * 60 * 24 * 365);
 
-        Cookie::queue('createTimeout', 1, time() + 60 * 5);
+        Cookie::queue('createTimeout', 1, 60);
 
         return redirect('/home');
     }
