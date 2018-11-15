@@ -37,10 +37,17 @@ class MessageController extends Controller
 
     public function store(Request $request)
     {
+        if ($request->hasFile('attachment')) {
+            $file = $request->file('attachment');
+            $filename = 'message-attachment' . time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('messages/img/'), $filename);
+        }
+
         $message = $request->user()->posts()->create([
             'subject' => $request->get('subject'),
             'body' => $request->get('body'),
-            'user_id' => $request->get('user_id')
+            'user_id' => $request->get('user_id'),
+            'attachment' => $filename
         ]);
 
         Cookie::queue($message->id, 0, time() + 60 * 60 * 24 * 365);
@@ -60,5 +67,15 @@ class MessageController extends Controller
         $commentCount = Comment::where('message_id', $message->id)->count();
 
         Cookie::queue($message->id, $commentCount, time() + 60 * 60 * 24 * 365);
+    }
+
+    public function status(Request $request, Message $message)
+    {
+
+        $message->status = $request->input('message-status');
+
+        $message->save();
+
+        return back();
     }
 }

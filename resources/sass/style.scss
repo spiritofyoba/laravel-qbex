@@ -18,6 +18,7 @@
     }
   }
 }
+
 .messages {
   &:last-child {
     hr {
@@ -31,7 +32,9 @@
     }
   }
 }
-
+body {
+  min-height: 100vh;
+}
 #comments {
   .commentlist {
     list-style: none;
@@ -51,6 +54,7 @@
     }
   }
 }
+
 #commentform {
   textarea {
     outline: none;
@@ -59,11 +63,13 @@
     padding: 10px;
   }
 }
+
 #respond {
   label {
     color: #777;
   }
 }
+
 .wrap_result {
   position: fixed;
   right: 0;
@@ -71,4 +77,48 @@
   max-width: 300px;
   width: 100%;
   bottom: 15px;
+}
+
+.attachment {
+  transition: all 0.3s;
+  &-hover {
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    left: 19px;
+    right: 19px;
+    top: 4px;
+    bottom: 4px;
+    text-align: center;
+    display: none;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 30px;
+    transition: all 0.3s
+  }
+  &:hover {
+    transition: all 0.3s;
+    .attachment-hover {
+      display: flex;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+  }
+  &-lightbox {
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    background: rgba(0,0,0,0.5);
+    img {
+      width: 100%;
+      max-width: 1140px;
+    }
+  }
 }

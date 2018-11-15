@@ -1,6 +1,22 @@
 jQuery(document).ready(function($){     
-	
-	//номерация комментариев
+
+    $('.attachment-hover').on('click', function () {
+        var src = $(this)
+            .closest('.attachment')
+            .find('img').attr('src');
+
+        $('body')
+            .append('<div class="attachment-lightbox"><img src="'+ src +'" /></div>')
+            .fadeIn(300);
+    });
+
+    $(document).on('click', '.attachment-lightbox', function () {
+        $(this)
+            .fadeOut(300)
+            .remove();
+    });
+
+
     $('.commentlist li').each(function(i){
         $(this).find('div.commentNumber').text('#' + (i+1));
     });

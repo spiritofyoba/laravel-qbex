@@ -13,6 +13,7 @@
                             </div>
                         @endif
                         @foreach($messages as $message)
+
                             @php
                                 $viewed = \Illuminate\Support\Facades\Cookie::get($message->id);
                                 $total = \App\Comment::where('message_id', $message->id)->count();
@@ -20,7 +21,14 @@
 
                             <div class="messages row align-items-center">
                                 <div class="col-12">
-                                    <p class="mb-0"><strong>{{$message->subject}}</strong></p>
+                                    <p class="mb-0">
+                                        <strong>{{$message->subject}}</strong>
+                                        @if($message->status == '1')
+                                            <span class="badge badge-success ml-1 float-right">Открыта</span>
+                                        @else
+                                            <span class="badge badge-danger ml-1 float-right">Закрыта</span>
+                                        @endif
+                                    </p>
                                     <p>{{$message->body}}</p>
                                 </div>
                                 <div class="col-6 text-left">
@@ -30,9 +38,9 @@
                                     <p class="text-right mb-0">
                                         <a class="btn btn-outline-primary messages-answer"
                                            href="{{ route('message', $message->id) }}">
-                                            Ответы
+                                            Проссмотр
                                             @if($total != $viewed && $total > $viewed)
-                                                <span class="badge badge-primary q2">{{ $total - $viewed }}</span>
+                                                <span class="badge badge-primary">{{ $total - $viewed }}</span>
                                             @endif
                                         </a>
                                     </p>

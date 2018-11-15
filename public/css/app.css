@@ -10499,6 +10499,10 @@ a.text-dark:focus {
   margin-left: 5px;
 }
 
+body {
+  min-height: 100vh;
+}
+
 #comments .commentlist {
   list-style: none;
   padding: 0;
@@ -10538,6 +10542,71 @@ a.text-dark:focus {
   max-width: 300px;
   width: 100%;
   bottom: 15px;
+}
+
+.attachment {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.attachment-hover {
+  position: absolute;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  left: 19px;
+  right: 19px;
+  top: 4px;
+  bottom: 4px;
+  text-align: center;
+  display: none;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 30px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.attachment:hover {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.attachment:hover .attachment-hover {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.attachment-lightbox {
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.attachment-lightbox img {
+  width: 100%;
+  max-width: 1140px;
 }
 
 .navbar-laravel {

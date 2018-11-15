@@ -1,5 +1,5 @@
 <div class="user-messages">
-    <form role="form" action="{{action('MessageController@store')}}" method="post">
+    <form role="form" action="{{action('MessageController@store')}}" method="post" enctype="multipart/form-data">
 
         @csrf
 
@@ -12,7 +12,7 @@
             <textarea name="body" id="message_body" cols="30" rows="4" class="form-control" required></textarea>
         </div>
         <div class="form-group">
-            <input type="file" class="form-control-file" id="InputFile" aria-describedby="fileHelp">
+            <input type="file" class="form-control-file" name="attachment" id="InputFile" aria-describedby="fileHelp">
         </div>
         <input type="hidden" name="user_id" value="{{  \Illuminate\Support\Facades\Auth::user()->id }}">
         <button class="btn btn-success" type="submit"
