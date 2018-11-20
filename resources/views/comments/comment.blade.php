@@ -8,9 +8,14 @@
                         @if($item->user_id == \Illuminate\Support\Facades\Auth::user()->id)
                             <span class="font-weight-bold mr-2">You</span>
                         @else
-                            <span class="font-weight-bold mr-2">Manager</span>
+                            @if(\Illuminate\Support\Facades\Auth::user()->role == 'manager')
+                                <span class="font-weight-bold mr-2">Cleint</span>
+                            @else
+                                <span class="font-weight-bold mr-2">Manager</span>
+                            @endif
+                            
                         @endif
-                        {{ is_object($item->created_at) ? $item->created_at->format('d.m.Y в H:i') : ''}}
+                        {{ is_object($item->created_at) ? $item->created_at->format('d.m.Y в H:i:s') : ''}}
                     </div>
                     <hr>
                 </div>

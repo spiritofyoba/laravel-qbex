@@ -44,7 +44,7 @@
                                 @endif
                             </div>
                             <div class="col-6 text-right">
-                                <span>{{ $message->created_at }}</span>
+                                <span>{{ $message->created_at->format('d.m.Y H:i:s') }}</span>
                             </div>
                         </div>
                     </div>

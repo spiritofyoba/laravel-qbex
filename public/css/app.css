@@ -10625,8 +10625,6 @@ body {
   border-color: #888888;
 }
 
-/* input file style */
-
 .input-file {
   width: 0.1px;
   height: 0.1px;
@@ -10644,13 +10642,13 @@ body {
   cursor: pointer;
 }
 
-.input-file + .js-labelFile .icon:before {
-  content: "\F093";
-}
-
 .input-file + .js-labelFile.has-file .icon:before {
   content: "\F00C";
   color: #5AAC7B;
+}
+
+.input-file + .js-labelFile .icon:before {
+  content: "\F093";
 }
 
 .navbar-laravel {

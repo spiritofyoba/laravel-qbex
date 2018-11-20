@@ -32,7 +32,7 @@
                                     <p>{{$message->body}}</p>
                                 </div>
                                 <div class="col-6 text-left">
-                                    <p class="mb-0">{{$message->created_at}}</p>
+                                    <p class="mb-0">{{$message->created_at->format('d.m.Y H:i:s') }}</p>
                                 </div>
                                 <div class="col-6 text-right">
                                     <p class="text-right mb-0">

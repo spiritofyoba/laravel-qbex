@@ -55,7 +55,7 @@ class MessageController extends Controller
 
         Cookie::queue($message->id, 0, time() + 60 * 60 * 24 * 365);
 
-        Cookie::queue('createTimeout', 1, 60);
+        Cookie::queue('createTimeout', 1, 60 * 5);
 
         return redirect('/home');
     }
